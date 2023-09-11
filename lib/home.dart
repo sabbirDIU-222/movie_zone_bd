@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_task_manager_app/uitl/modified.dart';
 import 'package:flutter_task_manager_app/widget/top_rated.dart';
 import 'package:flutter_task_manager_app/widget/tranding_movies.dart';
+import 'package:flutter_task_manager_app/widget/tv_shows.dart';
 import 'package:tmdb_api/tmdb_api.dart';
 
 class HomePage extends StatefulWidget {
@@ -60,6 +61,7 @@ class _HomePageState extends State<HomePage> {
       ),
       body: ListView(
         children: [
+          TvShows(tvshows_list: tvshows),
           TrendingMovies(trandingmovies: trandingMovie,),
           TopRatedMovies(topratedmovies: topRatedMovie),
         ],
