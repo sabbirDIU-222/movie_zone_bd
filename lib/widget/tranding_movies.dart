@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_task_manager_app/description.dart';
 import 'package:flutter_task_manager_app/uitl/modified.dart';
 
 class TrendingMovies extends StatelessWidget {
@@ -25,8 +26,17 @@ class TrendingMovies extends StatelessWidget {
               itemCount: trandingmovies.length,
               itemBuilder: (context, index) {
                 return InkWell(
-                  onTap: () {},
-                  child: Container(
+                  onTap: () {
+                    Navigator.push(context, MaterialPageRoute(builder: (context) {
+                      return Description(name: trandingmovies[index]['title'],
+                          description: trandingmovies[index]['overview'],
+                          bannerurl:  'https://image.tmdb.org/t/p/w500' + trandingmovies[index]['backdrop_path'],
+                          posterurl:  'https://image.tmdb.org/t/p/w500' + trandingmovies[index]['poster_path'],
+                          vote: trandingmovies[index]['vote_average'].toString(),
+                          lunch_on: trandingmovies[index]['release_date']);
+                    },));
+                  },
+                  child:trandingmovies[index]['original_title'] != null ? Container(
                     width: 140,
                     child: Column(
                       children: [
@@ -42,14 +52,14 @@ class TrendingMovies extends StatelessWidget {
                         SizedBox(height: 5,),
                         Container(
                           child: modified_text(
-                            text: trandingmovies[index]['title'] != null
-                                ? trandingmovies[index]['title']
+                            text: trandingmovies[index]['original_title'] != null
+                                ? trandingmovies[index]['original_title']
                                 : 'not found',
                           ),
                         ),
                       ],
                     ),
-                  ),
+                  ) : Container(),
                 );
               },
             ),

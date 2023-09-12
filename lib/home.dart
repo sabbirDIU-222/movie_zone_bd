@@ -44,7 +44,7 @@ class _HomePageState extends State<HomePage> {
       trandingMovie = trandingresult['results'];
       topRatedMovie = topRatedResult['results'];
       tvshows = tvResult['results'];
-      print(topRatedMovie);
+      print(tvshows);
     });
 
 
